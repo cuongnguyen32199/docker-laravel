@@ -18,8 +18,8 @@ class CreateTicketsTable extends Migration
             $table->uuid('id')->unique();
             $table->string('title', 255);
             $table->text('description')->nullable();
-            $table->foreign('owner_id')->references('id')->on('users');
             $table->enum('status', ['new', 'doing', 'completed']);
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }
