@@ -9,6 +9,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN curl -fsSL https://deb.nodesource.com/setup_12.x | bash -
 
 RUN apt-get update && apt-get install -y curl zip nodejs
+RUN pecl install xdebug-2.8.0 && docker-php-ext-enable xdebug
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-install pdo_mysql bcmath
