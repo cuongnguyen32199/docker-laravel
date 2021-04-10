@@ -2,32 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
+use App\Models\User;
 
 class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return JsonResponse
+     * @return Application|Factory|View|JsonResponse
      */
-    public function index(): JsonResponse
+    public function index()
     {
-        $users = [];
-        $password = Hash::make('password');
-        for ($i = 0; $i < 100; $i++) {
-            $users[] = [
-                'name' => Str::random(10),
-                'email' => Str::random(10) . '@gmail.com',
-                'password' => $password,
-            ];
-        }
+        $users = User::limit(100)->get();
 
-        return response()->json($users);
+        return view('users.list', compact('users'));
     }
 
     /**

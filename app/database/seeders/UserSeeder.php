@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Faker\Factory;
 use App\Models\User;
 
 class UserSeeder extends Seeder
@@ -17,19 +18,26 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        set_time_limit(3600); // Inscrese script timeout
         User::truncate();
 
 //        User::factory()
 //            ->count(10000) // Take 17,949.53ms
 //            ->create();
+        $password = Hash::make('password');
+
+        User::create([
+            'name' => 'Nguyễn Mạnh Cường',
+            'email' => 'cuongnm4215@gmail.com',
+            'password' => $password,
+        ]);
+
+        $faker = Factory::create();
 
         $users = [];
-        $password = Hash::make('password');
-        for ($i = 0; $i < 10000; $i++) {
+        for ($i = 0; $i < 20000; $i++) {
             $users[] = [
-                'name' => Str::random(10),
-                'email' => Str::random(10) . '@gmail.com',
+                'name' => $faker->name,
+                'email' => $faker->unique()->email,
                 'password' => $password,
             ];
         }
