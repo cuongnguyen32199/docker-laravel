@@ -19,7 +19,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::limit(100)->get();
+        $users = User::limit(100)->get(['name', 'email']);
 
         return view('users.list', compact('users'));
     }

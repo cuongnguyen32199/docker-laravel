@@ -12,7 +12,7 @@
                     <div class="rounded-t-xl overflow-hidden bg-gradient-to-r from-indigo-50 to-indigo-100 p-10">
                         <div class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-3">
                             @foreach ($users as $user)
-                                <div class="shadow-sm h-16 w-128 font-medium bg-white rounded-md flex items-center justify-center">{{ $user->name }}</div>
+                                <div class="shadow-xl h-16 w-128 font-medium bg-white rounded-md flex items-center justify-center">{{ $user->name }}</div>
                             @endforeach
                         </div>
                     </div>
