@@ -20,11 +20,4 @@ use App\Http\Controllers\UserController;
 |--------------------------------------------------------------------------
 */
 
-Route::middleware(['auth'])->group(function () {
-    Route::view('/', 'welcome')->name('welcome');
-    Route::view('/dashboard', 'dashboard')->name('dashboard');
-
-    Route::resource('users', UserController::class);
-});
-
-require __DIR__ . '/auth.php';
+Route::view('/{uri?}', 'welcome')->where('uri', '(.*)');
