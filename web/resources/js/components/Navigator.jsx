@@ -65,7 +65,11 @@ const styles = (theme) => ({
   },
   firebase: {
     fontSize: 24,
-    color: theme.palette.common.white,
+    color: '#4fc3f7',
+    height: '48px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   itemActiveItem: {
     color: '#4fc3f7',
@@ -89,7 +93,7 @@ function Navigator(props) {
     <Drawer variant="permanent" {...other}>
       <List disablePadding>
         <ListItem className={clsx(classes.firebase, classes.item, classes.itemCategory)}>
-          PaperBase
+          Fire Base
         </ListItem>
         <ListItem className={clsx(classes.item, classes.itemCategory)}>
           <ListItemIcon className={classes.itemIcon}>
@@ -100,7 +104,7 @@ function Navigator(props) {
               primary: classes.itemPrimary,
             }}
           >
-            Project Overview
+            Fire Base Platform
           </ListItemText>
         </ListItem>
         {categories.map(({ id, children }) => (
