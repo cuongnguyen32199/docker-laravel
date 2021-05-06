@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Paperbase from './Paperbase';
+import PaperBase from './PaperBase';
 
 function Wrapper() {
-    return (
-        <Paperbase />
-    );
+  return (
+    <PaperBase />
+  );
 }
 
 if (document.getElementById('root')) {
-    ReactDOM.render(<Wrapper />, document.getElementById('root'));
+  ReactDOM.render(<Wrapper />, document.getElementById('root'));
 }
