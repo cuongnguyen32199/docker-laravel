@@ -1,11 +1,52 @@
-@import url(https://fonts.googleapis.com/css2?family=Nunito&display=swap);
-html, body {
+@import url(https://fonts.googleapis.com/css2?family=Nunito&family=Roboto&display=swap);
+html,
+body {
   font-family: "Nunito", sans-serif;
   padding: 0;
   margin: 0;
 }
 
 * {
-  font-family: "Nunito", sans-serif;
   box-sizing: border-box;
+}
+
+.app {
+  display: grid;
+  grid-template-areas: "header header" "sidebar content";
+  grid-template-rows: 50px 1fr;
+  grid-template-columns: 265px 1fr;
+  width: 100%;
+  min-height: calc(100vh - 30px);
+}
+
+.header {
+  grid-area: header;
+  color: #fff;
+  background: linear-gradient(87deg, #11cdef, #1171ef);
+}
+.header__brand {
+  height: 100%;
+  width: 265px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  padding: 4px 6px;
+  background-color: #fff;
+  box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15);
+}
+
+.content {
+  grid-area: content;
+  padding: 20px;
+  margin: 20px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15);
 }
