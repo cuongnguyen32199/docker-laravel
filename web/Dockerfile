@@ -14,7 +14,8 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN docker-php-ext-install pdo_mysql bcmath && \
     pecl install -o -f redis && \
     rm -rf /tmp/pear && \
-    docker-php-ext-enable redis
+    docker-php-ext-enable redis && \
+    npm install -g yarn	
 
 RUN usermod -u 1000 www-data
 COPY . $INSTALL_PATH
