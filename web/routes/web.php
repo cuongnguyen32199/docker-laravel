@@ -1,6 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 
-Route::view('/{uri?}', 'welcome')->where('uri', '(.*)');
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::get('/', function () {
+        return 'Home route';
+    });
+
+    Route::get('/dashboard', function () {
+        return 'Dashboard route';
+    });
+});
