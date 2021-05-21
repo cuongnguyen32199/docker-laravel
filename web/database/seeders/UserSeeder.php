@@ -22,10 +22,8 @@ class UserSeeder extends Seeder
         User::truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
-//        User::factory()
-//            ->count(10000) // Take 17,949.53ms
-//            ->create();
         $password = Hash::make('password');
+        $now = date('Y-m-d H:i:s');
 
         User::create([
             'name' => 'Nguyễn Mạnh Cường',
@@ -36,15 +34,19 @@ class UserSeeder extends Seeder
         $faker = Factory::create();
 
         $users = [];
-        for ($i = 0; $i < 20000; $i++) {
+        for ($i = 0; $i < 50000; $i++) {
             $users[] = [
                 'name' => $faker->name,
                 'email' => $faker->unique()->email,
                 'password' => $password,
+                'created_at' => $now,
+                'updated_at' => $now,
             ];
         }
 
-        User::insert($users); // Insert 10000 take 529.78ms
-//        DB::table('users')->insert($users); // Insert 10000 take 553.78ms
+        $chunks = array_chunk($users, 10000);
+        foreach ($chunks as $chunk) {
+            User::insert($chunk);
+        }
     }
 }
